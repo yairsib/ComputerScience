@@ -74,7 +74,7 @@ public class ID_Project {
         }
         System.out.println();
         System.out.println(verification(arrayID , verification));
-        if (verification(arrayID , verification) == true){
+        if (verification(arrayID , verification)){
             System.out.println(checkDigit(verification));
         }
 
@@ -120,21 +120,26 @@ class Wordle_Exe {
         String playerWord = scanner.next();
         int turns = 6;
         String answer = "";
-        while (turns != 0){
+        while (turns > 1){
             if (checkLetters(playerWord)){
                 answer = checkGuesses(theWord , playerWord);
-                turns --;
                 System.out.println(answer);
+                turns --;
+
             }
             if (answer.equals("GGGGG")){
                 System.out.println("you won!!!");
                 break;
-            } else {
-                System.out.println("you've left " + turns + " turns ,try another word");
-                playerWord = scanner.next();
-
             }
+            System.out.println("you've left " + turns + " turns ,try another word");
+            playerWord = scanner.next();
 
+
+
+        }
+        if (turns == 1){
+            System.out.println("YOU LOST!!!");
+            System.out.println("this is the word: " + theWord);
         }
 
 
